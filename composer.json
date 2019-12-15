@@ -1,0 +1,13 @@
+{
+    "name": "frexin/phalcon-app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "frexin",
+            "email": "frexin@gmail.com"
+        }
+    ],
+    "require": {
+        "phalcon/devtools": "^3.4"
+    }
+}
