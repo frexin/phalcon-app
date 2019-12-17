@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  site:
+    container_name: site
+    image: amqamq/phalcon:7.2-nginx-alpine
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./site:/app/public
+  users:
+    container_name: users
+    image: amqamq/phalcon:7.2-nginx-alpine
+    command: phalcon migration run
+    restart: always
+    expose:
+      - 8000
+    volumes:
+      - ./users:/app/public
+      - ./docker/nginx:/etc/nginx/conf.d
