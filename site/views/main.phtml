@@ -1,0 +1,67 @@
+<?php
+/* @var $response  */
+/* @var $error  */
+?>
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <title>Sign in</title>
+   <style>
+      body {
+         display: -ms-flexbox;
+         display: flex;
+         -ms-flex-align: center;
+         align-items: center;
+         padding-top: 40px;
+         padding-bottom: 40px;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 330px;
+         padding: 15px;
+         margin: auto;
+      }
+
+      .alert {
+         margin-top: 25px;
+      }
+   </style>
+</head>
+<body>
+<div class="container">
+    <?php if (isset($response['status']) && $response['status'] == 'success'): ?>
+       <div class="alert alert-success" role="alert">
+           <?php $msg = htmlspecialchars($response['message']) ?? null; echo $msg; ?>
+       </div>
+    <?php else: ?>
+       <form method="post" autocomplete="off">
+          <h1 class="h3 mb-3">Please sign in</h1>
+          <div class="form-group">
+             <label for="login">Login</label>
+             <input type="text" class="form-control" id="login" name="login">
+          </div>
+          <div class="form-group">
+             <label for="password">Password</label>
+             <input type="password" class="form-control" id="password" name="password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+       </form>
+    <?php endif; ?>
+
+    <?php if (!empty($error) || (isset($response['status']) && $response['status'] == 'error')): ?>
+       <div class="alert alert-danger" role="alert">
+           <?php $msg = $error ? $error : htmlspecialchars($response['message']) ?? null; echo $msg; ?>
+       </div>
+    <?php endif; ?>
+</div>
+
+</body>
+</html>

@@ -8,6 +8,11 @@
         }
     ],
     "require": {
+        "ext-curl": "*",
+        "ext-phalcon": "*",
+      "ext-json": "*"
+    },
+    "require-dev": {
         "phalcon/devtools": "^3.4"
     }
 }
