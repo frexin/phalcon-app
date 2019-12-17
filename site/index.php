@@ -21,7 +21,7 @@ $app->get('/', function () use ($app) {
 });
 
 $app->post('/', function () use ($app) {
-    $httpClient = new SimpleHttpClient("http://phalcon-app/auth");
+    $httpClient = new SimpleHttpClient("http://users/auth");
     $httpClient->setData([
         'login' => $app->request->getPost('login'),
         'password' => $app->request->getPost('password')
